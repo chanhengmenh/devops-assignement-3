@@ -19,6 +19,14 @@ pipeline {
             }
         }
 
+        stage('Build') {
+            steps {
+                echo 'Building Docker image...'
+                sh 'docker build -t foodexpress/fastapi:v1.0 /home/ubuntu/current/FoodExpressAPI'
+                echo 'Build Done'
+            }
+        }
+
     }
 
     post {
