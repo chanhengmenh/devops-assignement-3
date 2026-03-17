@@ -65,22 +65,22 @@ def create_order(order: OrderCreate):
     return {"message": "Order created successfully", "order": new_order}
 
 
-# PUT update an existing order
-@app.put("/orders/{order_id}")
-def update_order(order_id: int, order_update: OrderUpdate):
-    order = next((o for o in orders if o["id"] == order_id), None)
-    if not order:
-        raise HTTPException(status_code=404, detail=f"Order {order_id} not found")
-    for field, value in order_update.dict(exclude_none=True).items():
-        order[field] = value
-    return {"message": "Order updated successfully", "order": order}
+# # PUT update an existing order
+# @app.put("/orders/{order_id}")
+# def update_order(order_id: int, order_update: OrderUpdate):
+#     order = next((o for o in orders if o["id"] == order_id), None)
+#     if not order:
+#         raise HTTPException(status_code=404, detail=f"Order {order_id} not found")
+#     for field, value in order_update.dict(exclude_none=True).items():
+#         order[field] = value
+#     return {"message": "Order updated successfully", "order": order}
 
 
-# DELETE an order
-@app.delete("/orders/{order_id}")
-def delete_order(order_id: int):
-    order = next((o for o in orders if o["id"] == order_id), None)
-    if not order:
-        raise HTTPException(status_code=404, detail=f"Order {order_id} not found")
-    orders.remove(order)
-    return {"message": f"Order {order_id} deleted successfully"}
+# # DELETE an order
+# @app.delete("/orders/{order_id}")
+# def delete_order(order_id: int):
+#     order = next((o for o in orders if o["id"] == order_id), None)
+#     if not order:
+#         raise HTTPException(status_code=404, detail=f"Order {order_id} not found")
+#     orders.remove(order)
+#     return {"message": f"Order {order_id} deleted successfully"}
