@@ -11,6 +11,8 @@ pipeline {
             }
         }
 
+    }
+
     post {
         failure {
             echo 'Pipeline failed. Check the Console Output for details.'
