@@ -27,6 +27,18 @@ pipeline {
             }
         }
 
+        stage('Run Image As Container') {
+            steps {
+                echo 'Deploying container...'
+                sh '''
+                    docker stop foodexpress-container || true
+                    docker rm foodexpress-container || true
+                    docker run --name foodexpress-container -d -p 8000:8000 foodexpress/fastapi:v1.0
+                '''
+                echo 'FoodExpress FastAPI is running inside Docker on port 8000'
+            }
+        }
+
     }
 
     post {
