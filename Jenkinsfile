@@ -11,6 +11,14 @@ pipeline {
             }
         }
 
+        stage('Copy') {
+            steps {
+                echo 'Copying files to /home/ubuntu/current...'
+                sh 'cp -r FoodExpressAPI /home/ubuntu/current'
+                echo 'Copy Done'
+            }
+        }
+
     }
 
     post {
